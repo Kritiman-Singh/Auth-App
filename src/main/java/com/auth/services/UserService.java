@@ -8,6 +8,7 @@ public interface UserService {
     UserDto createUser(UserDto userDto);
 
     //get user by email
+/*
     UserDto getUserByEmail(String email);
 
     //update user
@@ -21,6 +22,7 @@ public interface UserService {
 
     //get all users
     Iterable<UserDto> getAllUsers();
+*/
 
     // user service se related __
 
