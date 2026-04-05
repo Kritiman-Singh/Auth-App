@@ -4,6 +4,7 @@ import com.auth.dtos.UserDto;
 import com.auth.entities.Provider;
 import com.auth.entities.User;
 import com.auth.exceptions.ResourceNotFoundException;
+import com.auth.helpers.UserHelper;
 import com.auth.repositories.UserRepository;
 import com.auth.services.UserService;
 import jakarta.transaction.Transactional;
