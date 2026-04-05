@@ -2,13 +2,13 @@ package com.auth.services;
 
 import com.auth.dtos.UserDto;
 
+
 public interface UserService {
 
     //create user
     UserDto createUser(UserDto userDto);
 
     //get user by email
-/*
     UserDto getUserByEmail(String email);
 
     //update user
@@ -22,7 +22,7 @@ public interface UserService {
 
     //get all users
     Iterable<UserDto> getAllUsers();
-*/
+
 
     // user service se related __
 
