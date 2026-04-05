@@ -6,12 +6,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-/*import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;*/
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.ErrorResponse;
-import org.springframework.web.ErrorResponseException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -20,7 +19,7 @@ public class GlobalExceptionHandler {
 
     private  final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-/*    @ExceptionHandler({
+    @ExceptionHandler({
             UsernameNotFoundException.class,
             BadCredentialsException.class,
             CredentialsExpiredException.class,
@@ -32,12 +31,12 @@ public class GlobalExceptionHandler {
         var apiError=ApiError.of(HttpStatus.BAD_REQUEST.value(), "Bad Request", e.getMessage(), request.getRequestURI());
         return ResponseEntity.badRequest().body(apiError);
 
-    }*/
+    }
 
     //resource not found exception handler :: method
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException exception) {
-        ErrorResponse internalServerError = new ErrorResponseException(exception.getMessage(), HttpStatus.NOT_FOUND, 404) {
+        ErrorResponse internalServerError = new ErrorRespon(exception.getMessage(), HttpStatus.NOT_FOUND, 404) {
         };
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(internalServerError);
     }
