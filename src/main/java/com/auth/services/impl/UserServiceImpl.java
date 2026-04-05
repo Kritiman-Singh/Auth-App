@@ -3,6 +3,7 @@ package com.auth.services.impl;
 import com.auth.dtos.UserDto;
 import com.auth.entities.Provider;
 import com.auth.entities.User;
+import com.auth.exceptions.ResourceNotFoundException;
 import com.auth.repositories.UserRepository;
 import com.auth.services.UserService;
 import jakarta.transaction.Transactional;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.UUID;
 
 
