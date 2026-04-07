@@ -1,5 +1,6 @@
 package com.auth.exceptions;
 
+import com.auth.dtos.ApiError;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ public class GlobalExceptionHandler {
     private  final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler({
+            UsernameNotFoundException.class,
             BadCredentialsException.class,
             CredentialsExpiredException.class,
             DisabledException.class
@@ -27,15 +29,15 @@ public class GlobalExceptionHandler {
     })
     public ResponseEntity<ApiError> handleAuthException(Exception e, HttpServletRequest request) {
         logger.info("Exception  : {}", e.getClass().getName());
-        var apiError=ApiError.of(HttpStatus.BAD_REQUEST.value(), "Bad Request", e.getMessage(), request.getRequestURI());
+        var apiError= ApiError.of(HttpStatus.BAD_REQUEST.value(), "Bad Request", e.getMessage(), request.getRequestURI());
         return ResponseEntity.badRequest().body(apiError);
 
     }
 
     //resource not found exception handler :: method
-    @ExceptionHandler(ResourceNotFoundException.class)
+/*    @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException exception) {
-        ErrorResponse internalServerError = new ErrorRespon(exception.getMessage(), HttpStatus.NOT_FOUND, 404) {
+        ErrorResponse internalServerError = new ErrorResponse(exception.getMessage(), HttpStatus.NOT_FOUND, 404) {
         };
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(internalServerError);
     }
@@ -43,7 +45,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException exception) {
-        ErrorResponse internalServerError = new ErrorResponse(exception.getMessage(), HttpStatus.BAD_REQUEST, 400);
+        ErrorResponse internalServerError = new ErrorResponse(exception.getMessage(), HttpStatus.BAD_REQUEST, 400) {
+        };
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(internalServerError);
-    }
+    }*/
+
+
 }
