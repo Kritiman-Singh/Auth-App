@@ -20,7 +20,6 @@ public class GlobalExceptionHandler {
     private  final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler({
-            UsernameNotFoundException.class,
             BadCredentialsException.class,
             CredentialsExpiredException.class,
             DisabledException.class
