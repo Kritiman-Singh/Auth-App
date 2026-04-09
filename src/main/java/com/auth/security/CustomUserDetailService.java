@@ -1,5 +1,7 @@
 package com.auth.security;
 
+import com.auth.entities.User;
+import com.auth.exceptions.ResourceNotFoundException;
 import com.auth.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +16,7 @@ public class CustomUserDetailService implements UserDetailsService {
     private  final UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+      User user =  userRepository.findByEmail(username).orElseThrow(()-> new ResourceNotFoundException("Invalid Email or Password"));
+      return user;
     }
 }
