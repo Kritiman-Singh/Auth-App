@@ -17,7 +17,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserDto registerUser(UserDto userDto) {
-        //logic
+
         //verify email
         //verify password
         //default roles
