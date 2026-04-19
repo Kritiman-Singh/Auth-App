@@ -22,11 +22,9 @@ public class CookieService {
     private  final Logger logger = org.slf4j.LoggerFactory.getLogger(CookieService.class);
 
     public CookieService(
-
             @Value("${security.jwt.refresh-token-cookie-name}") String refreshTokenCookieName,
             @Value("${security.jwt.cookie-http-only}") boolean cookieHttpOnly,
             @Value("${security.jwt.cookie-secure}") boolean cookieSecure,
-
             @Value("${security.jwt.cookie-same-site}") String cookieSameSite,
             @Value("${security.jwt.cookie-domain}") String cookieDomain
     ) {
