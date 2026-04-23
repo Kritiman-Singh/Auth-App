@@ -34,4 +34,5 @@ build/
 
 application-prod.yml
 application-dev.yml
+APIDocConfig.java
 
